@@ -67,6 +67,14 @@ MySceneGraph.prototype.onXMLReady=function()
 		return;
 	}	
 
+	var error = this.parseAnimations(rootElement);
+
+	if (error != null) {
+		this.onXMLError(error);
+		return;
+	}	
+
+
 	var error = this.parseLeaves(rootElement);
 
 	if (error != null) {
@@ -464,6 +472,60 @@ MySceneGraph.prototype.parseMaterials= function(rootElement) {
 
 	}
 }
+
+//Parser ANIMATIONS
+MySceneGraph.prototype.parseAnimations= function(rootElement) {
+
+	console.log("ANIMATIONS: \n");
+
+	var animations = rootElement.getElementsByTagName('ANIMATIONS');
+	if(animations == null) return "ANIMATIONS tag not found!";
+
+	var animationsInfo = animations[0];
+
+	var animation = animationsInfo.getElementsByTagName('ANIMATION');
+	if(animation == null) return "ANIMATION tag not found!";
+
+	for(var i = 0; i < animation.length; i++){
+
+	var animationInfo = animation[i];
+
+	var myAnimation = new Animation(this.reader.getString(animationInfo, "id", true));
+
+	myAnimation.span = this.reader.getFloat(animationInfo, "span", true);
+
+	myAnimation.type = this.reader.getItem(animationInfo, "type", ['linear', 'circular']);
+
+	console.log("\tANIMATION id: " + myAnimation.id + ", span: " + myAnimation.span + ", type: " + myAnimation.type);
+
+	if(myAnimation.type == "linear"){
+		var controlPoint = animationInfo.getElementsByTagName('controlpoint');
+		var controlPointInfo = controlPoint[0];
+		myAnimation.xControlPoint = this.reader.getFloat(controlPointInfo, "xx", true);
+		myAnimation.yControlPoint = this.reader.getFloat(controlPointInfo, "yy", true);
+		myAnimation.zControlPoint = this.reader.getFloat(controlPointInfo, "zz", true);
+	
+		console.log("\n\t\tcontrolpoint x: " + myAnimation.xControlPoint + ", y: " + myAnimation.yControlPoint + ", z: " + myAnimation.zControlPoint + "\n");
+	}
+
+	else if(myAnimation.type == "circular"){
+		var aux = this.reader.getString(animationInfo, "center", true);
+		myAnimation.center.x = parseFloat(aux.split(" ")[0]);
+		myAnimation.center.y = parseFloat(aux.split(" ")[1]);
+		myAnimation.center.z = parseFloat(aux.split(" ")[2]);
+
+		myAnimation.radius = this.reader.getFloat(animationInfo, "radius", true);
+		myAnimation.startang = this.reader.getFloat(animationInfo, "startang", true);
+		myAnimation.rotang = this.reader.getFloat(animationInfo, "rotang", true);
+		
+		console.log("\t\tcenter : " + myAnimation.center.x + " " + myAnimation.center.y + " " + myAnimation.center.z + ", radius: " + myAnimation.radius + ", startang: " + myAnimation.startang + ", rotang: " + myAnimation.rotang + "\n");
+	
+	}
+
+	}
+
+}
+
 //Parser LEAVES
 MySceneGraph.prototype.parseLeaves= function(rootElement) {
 
@@ -725,6 +787,24 @@ function Material(id) {
     	b: 0.0,
     	a: 0.0	
     };
+}
+
+function Animation(id) {
+    this.id = id;
+    this.span = 0.0;
+    this.type = null;
+    this.xControlPoint = 0.0;
+    this.yControlPoint = 0.0;
+    this.zControlPoint = 0.0;
+
+    this.center = {
+    	x: 0.0,
+    	y: 0.0,
+    	z: 0.0
+    };
+    this.radius = 0.0;
+    this.startang = 0.0;
+    this.rotang = 0.0;
 }
 
 function Node(id) {
