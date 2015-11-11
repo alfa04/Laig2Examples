@@ -17,7 +17,7 @@ function LinearAnimation(scene, span, controlPoint) {
     }
 
     this.speed = this.totalDist/this.span;
-
+    
 }
 
 LinearAnimation.prototype = Object.create(Animation.prototype);

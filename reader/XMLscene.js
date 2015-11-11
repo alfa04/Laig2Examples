@@ -197,7 +197,7 @@ XMLscene.prototype.display = function () {
                 node["primitive"].updateTex(node["texture"].amplifFactor_S, node["texture"].amplifFactor_T);
             }
             if(node["animationref"] != null){
-
+            	
             }
             node["material"].apply();
             this.multMatrix(node["matrix"]);
