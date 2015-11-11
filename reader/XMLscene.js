@@ -123,6 +123,16 @@ XMLscene.prototype.onGraphLoaded = function ()
 		this.materialsList.push(this.material);	
 	}  
 
+	//ANIMATIONS
+
+	for(var i = 0; i<this.graph.animationsList.length; i++){
+		this.animation = [];
+		
+		this.animation["id"] = this.graph.animationsList[i].id;
+		
+		this.animationsList.push(this.animation);	
+	} 
+
 
     //LEAVES
     this.setLeaves();
@@ -178,6 +188,9 @@ XMLscene.prototype.display = function () {
             node["material"].setTexture(node["texture"]);
             if (node["texture"] != null) {
                 node["primitive"].updateTex(node["texture"].amplifFactor_S, node["texture"].amplifFactor_T);
+            }
+            if(node["animationref"] != null){
+            	
             }
             node["material"].apply();
             this.multMatrix(node["matrix"]);
@@ -248,7 +261,7 @@ XMLscene.prototype.findNode = function(id) {
 XMLscene.prototype.setNodes = function() {
 
 	var root = this.findNode(this.graph.rootInfo["id"]);
-    this.calcNodes(root, root.texture, root.material, root.matrix);
+    this.calcNodes(root, root.texture, root.material, root.matrix, root.animationref);
 
 };
 
@@ -262,9 +275,20 @@ XMLscene.prototype.calcNodes = function(node, nodeTexture, nodeMaterial, nodeMat
 	if(node.material == "null")
 		nextNodeMaterial = nodeMaterial;
 		
-		
 	var nextNodeMatrix = mat4.create();
 	mat4.multiply(nextNodeMatrix, nodeMatrix, node.matrix);
+
+	//animation
+	if(node.animationref != null)
+	{
+		for(var z = 0; z<this.animationsList.length; z++){
+
+			if(node.animationref == this.animationsList[z]["id"]){
+				this.n["id"] = node.id;
+				this.n["animationref"] = node.animationref;
+			}
+		}
+	}
 
 	for(var i = 0; i < node.descendants.length; i++){
 		
