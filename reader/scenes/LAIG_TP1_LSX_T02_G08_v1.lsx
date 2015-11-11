@@ -157,6 +157,15 @@
 
 </MATERIALS>
 
+<ANIMATIONS>
+    <ANIMATION id="ss" span="0.5" type="linear">
+        <controlpoint xx="1.0" yy="1.5" zz="1.9" />
+        <controlpoint xx="2.0" yy="2.5" zz="2.9" />
+        <controlpoint xx="3.0" yy="3.5" zz="3.9" />
+    </ANIMATION>
+    <ANIMATION id="ss" span="0.5" type="circular" center="ff ff ff" radius="ff" startang="ff" rotang="ff" />
+</ANIMATIONS>
+
 <LEAVES>
 
     <!-- next lines define nodes of type leaf; they may be repeated, in any order, as necessary -->
@@ -447,6 +456,8 @@
         <DESCENDANTS>
             <DESCENDANT id="triangleKnife" />       
         </DESCENDANTS>
+
+        <animationref id = "ss" />
 
     </NODE>
 

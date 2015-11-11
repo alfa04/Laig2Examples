@@ -21,6 +21,7 @@ XMLscene.prototype.init = function (application) {
     this.leaveslist = [];
     this.texturesList = [];
     this.materialsList = [];
+    this.animationsList = [];
     this.nodesList = [];
 
 	this.axis=new CGFaxis(this);
@@ -28,8 +29,6 @@ XMLscene.prototype.init = function (application) {
 }
 
 XMLscene.prototype.initLights = function () {
-
-    this.shader.bind();
 
     this.lightsNo = [];
 
@@ -54,7 +53,6 @@ XMLscene.prototype.initLights = function () {
 
 	}
 
-    this.shader.unbind();
     this.interface.enableLights();
 };
 
@@ -136,8 +134,7 @@ XMLscene.prototype.onGraphLoaded = function ()
 
 XMLscene.prototype.display = function () {
 	// ---- BEGIN Background, camera and axis setup
-    this.shader.bind();
-	
+ 
 	// Clear image and depth buffer everytime we update the scene
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
     this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
@@ -189,7 +186,6 @@ XMLscene.prototype.display = function () {
         }
 	}
 
-    this.shader.unbind();
 };
 
 XMLscene.prototype.setInitials = function() {
