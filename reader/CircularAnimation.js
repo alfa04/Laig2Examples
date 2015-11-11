@@ -6,9 +6,6 @@ function CircularAnimation(scene, span, center, radius, startang, rotang) {
     this.startang = startang;
     this.rotang = rotang;
 
-    
-
-    this.initBuffers();
 }
 
 CircularAnimation.prototype = Object.create(Animation.prototype);

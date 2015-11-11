@@ -158,12 +158,12 @@
 </MATERIALS>
 
 <ANIMATIONS>
-    <ANIMATION id="ss" span="0.5" type="linear">
+    <ANIMATION id="ani1" span="0.5" type="linear">
         <controlpoint xx="1.0" yy="1.5" zz="1.9" />
         <controlpoint xx="2.0" yy="2.5" zz="2.9" />
         <controlpoint xx="3.0" yy="3.5" zz="3.9" />
     </ANIMATION>
-    <ANIMATION id="ss" span="0.5" type="circular" center="ff ff ff" radius="10.0" startang="90.0" rotang="60.0" />
+    <ANIMATION id="ani2" span="0.5" type="circular" center="ff ff ff" radius="10.0" startang="90.0" rotang="60.0" />
 </ANIMATIONS>
 
 <LEAVES>
@@ -425,6 +425,8 @@
             <DESCENDANT id="knife" />       
         </DESCENDANTS>
 
+        <animationref id = "ani1" />
+
     </NODE>
 
 
@@ -456,8 +458,6 @@
         <DESCENDANTS>
             <DESCENDANT id="triangleKnife" />       
         </DESCENDANTS>
-
-        <animationref id = "ss" />
 
     </NODE>
 

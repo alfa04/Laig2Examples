@@ -2,7 +2,6 @@ function Animation(scene, span) {
     this.scene = scene;
     this.span = span;
 
-    this.initBuffers();
 }
 
 Animation.prototype.constructor = Animation;
