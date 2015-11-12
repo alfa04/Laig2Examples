@@ -197,7 +197,7 @@ XMLscene.prototype.display = function () {
                 node["primitive"].updateTex(node["texture"].amplifFactor_S, node["texture"].amplifFactor_T);
             }
             if(node["animationref"] != null){
-            	
+            //	console.log(node["id"]+"aqio");
             }
             node["material"].apply();
             this.multMatrix(node["matrix"]);
@@ -272,7 +272,7 @@ XMLscene.prototype.setNodes = function() {
 
 };
 
-XMLscene.prototype.calcNodes = function(node, nodeTexture, nodeMaterial, nodeMatrix) {
+XMLscene.prototype.calcNodes = function(node, nodeTexture, nodeMaterial, nodeMatrix, anim) {
 
 	var nextNodeTexture = node.texture;
 	if(node.texture == "null")
@@ -291,8 +291,7 @@ XMLscene.prototype.calcNodes = function(node, nodeTexture, nodeMaterial, nodeMat
 		for(var z = 0; z<this.animationsList.length; z++){
 
 			if(node.animationref == this.animationsList[z]["id"]){
-				this.n["id"] = node.id;
-				this.n["animationref"] = node.animationref;
+				anim = node.animationref;
 			}
 		}
 	}
@@ -330,6 +329,11 @@ XMLscene.prototype.calcNodes = function(node, nodeTexture, nodeMaterial, nodeMat
 				}
 			}
 
+			
+			//animations
+			this.n["animationref"] = anim;
+			
+		
 			//matrix
 			this.n["matrix"] = nextNodeMatrix;
 
@@ -342,12 +346,13 @@ XMLscene.prototype.calcNodes = function(node, nodeTexture, nodeMaterial, nodeMat
 				}
 			}
 
+			console.log(this.n);
 			this.nodesList.push(this.n);
 			continue;
 
 		}
 
-		this.calcNodes(nextNode, nextNodeTexture, nextNodeMaterial, nextNodeMatrix);
+		this.calcNodes(nextNode, nextNodeTexture, nextNodeMaterial, nextNodeMatrix, anim);
 
 	}
 

@@ -1,6 +1,7 @@
-function Animation(scene, span) {
-    this.scene = scene;
+function Animation(id, span) {
+    this.id = id;
     this.span = span;
+    this.matrix = mat4.create();
 
 }
 
@@ -9,6 +10,6 @@ Animation.prototype.init = function () {
 
 };
 
-Animation.prototype.update = function () {
+Animation.prototype.update = function (step) {
 
 };

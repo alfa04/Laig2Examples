@@ -1,5 +1,5 @@
-function LinearAnimation(scene, span, controlPoint) {
-    Animation.call(this, scene, span);
+function LinearAnimation(id, span, controlPoint) {
+    Animation.call(this, id, span);
 
     this.span = span;
     this.controlPoint = controlPoint;
