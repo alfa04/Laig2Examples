@@ -163,7 +163,7 @@
         <controlpoint xx="0.0" yy="0.0" zz="0.0" />
         <controlpoint xx="0.0" yy="0.0" zz="0.0" />
     </ANIMATION>
-    <ANIMATION id="ani2" span="0.5" type="circular" center="ff ff ff" radius="10.0" startang="90.0" rotang="60.0" />
+    <ANIMATION id="ani2" span="0.5" type="circular" center="0.0 0.0 0.0" radius="10.0" startang="90.0" rotang="60.0" />
 </ANIMATIONS>
 
 <LEAVES>
@@ -177,6 +177,7 @@
     <LEAF id="cylinderStick" type="cylinder" args="4.5 0.1 0.1 20 6" /> 
     <LEAF id="sphereHead" type="sphere" args="1.0 30 30" />
     <LEAF id="triangleKnife" type="triangle" args="-0.35 0.0 0.0  0.35 0.0 0.0  0.0 3.0 0.0" />
+    <LEAF id="exemplo" type="plane" parts="5" />
 
     <!-- Parameters of the above primitives:                                                         -->
         <!--rectangle: 2D coordinates for left-top and right-bottom vertices.                        -->

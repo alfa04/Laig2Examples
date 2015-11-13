@@ -586,6 +586,13 @@ MySceneGraph.prototype.parseLeaves= function(rootElement) {
 		leafInfo.args.push(parseFloat(aux2[2].split(" ")[1]));
 		leafInfo.args.push(parseFloat(aux2[2].split(" ")[2]));
 	}
+	else if(leafInfo.type == "plane"){
+	//parts
+
+	var aux = this.reader.getFloat(leaf[i], "parts", true);
+	leafInfo.args.push(aux);
+	console.log(leafInfo.args); 
+	}
 
 	this.leaveslist.push(leafInfo);
 	}
