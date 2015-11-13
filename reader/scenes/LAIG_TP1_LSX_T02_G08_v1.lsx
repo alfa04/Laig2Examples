@@ -158,10 +158,10 @@
 </MATERIALS>
 
 <ANIMATIONS>
-    <ANIMATION id="ani1" span="0.5" type="linear">
-        <controlpoint xx="1.0" yy="1.5" zz="1.9" />
-        <controlpoint xx="2.0" yy="2.5" zz="2.9" />
-        <controlpoint xx="3.0" yy="3.5" zz="3.9" />
+    <ANIMATION id="ani1" span="5.0" type="linear">
+        <controlpoint xx="5.0" yy="0.0" zz="0.0" />
+        <controlpoint xx="0.0" yy="0.0" zz="0.0" />
+        <controlpoint xx="0.0" yy="0.0" zz="0.0" />
     </ANIMATION>
     <ANIMATION id="ani2" span="0.5" type="circular" center="ff ff ff" radius="10.0" startang="90.0" rotang="60.0" />
 </ANIMATIONS>
@@ -424,7 +424,7 @@
             <DESCENDANT id="stick" />       
             <DESCENDANT id="knife" />       
         </DESCENDANTS>
-
+        
         <animationref id = "ani1" />
 
     </NODE>
