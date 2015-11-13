@@ -14,10 +14,7 @@ function LinearAnimation(id, span, controlPoint) {
     this.idx = 0;
     this.paragem = 0;
 
-    this.matrix = [1.0, 0.0, 0.0, 0.0,
-                  0.0, 1.0, 0.0, 0.0,
-                  0.0, 0.0, 1.0, 0.0,
-                  this.cpX, this.cpY, this.cpZ, 1.0];
+    this.matrix = mat4.create();
            
     for(var i = 0; i < this.controlPoint.length-1; i++){
     	var dx = this.controlPoint[0][0]; - this.controlPoint[i][0];
@@ -39,10 +36,10 @@ LinearAnimation.prototype.constructor = LinearAnimation;
 
 LinearAnimation.prototype.update = function () {
 
-    this.matrix =  [1.0, 0.0, 0.0, 0.0,
-                    0.0, 1.0, 0.0, 0.0,
-                    0.0, 0.0, 1.0, 0.0,
-                    this.cpX, this.cpY, this.cpZ, 1.0];
+    this.vec = vec3.fromValues(this.cpX, this.cpY, this.cpZ);
+
+    mat4.identity(this.matrix);
+    mat4.translate(this.matrix, this.matrix, this.vec);
 
     if(this.movingX == 0){
         if(this.cpX - this.animat1x < 0)
