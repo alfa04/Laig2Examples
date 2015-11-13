@@ -178,6 +178,7 @@
     <LEAF id="sphereHead" type="sphere" args="1.0 30 30" />
     <LEAF id="triangleKnife" type="triangle" args="-0.35 0.0 0.0  0.35 0.0 0.0  0.0 3.0 0.0" />
     <LEAF id="exemplo" type="plane" parts="5" />
+    <LEAF id="exemplo" type="plane" parts="5" />
 
     <!-- Parameters of the above primitives:                                                         -->
         <!--rectangle: 2D coordinates for left-top and right-bottom vertices.                        -->

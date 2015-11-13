@@ -261,6 +261,12 @@ XMLscene.prototype.setLeaves = function() {
                 planenurbs.id = leaf.id;
                 this.leaveslist.push(planenurbs);
                 break;
+			 case "patch":
+               // planenurbs = new planenurbs(this,leaf.args);
+               // planenurbs.id = leaf.id;
+               // this.leaveslist.push(planenurbs);
+               // break;
+
         }
 	}
 };

@@ -550,7 +550,7 @@ MySceneGraph.prototype.parseLeaves= function(rootElement) {
 
 	var leafInfo = new Leaf (leaf[i].getAttribute('id'));
 
-	leafInfo.type= this.reader.getItem(leaf[i], "type", ['plane','rectangle', 'cylinder', 'sphere', 'triangle','patch']);
+	leafInfo.type= this.reader.getItem(leaf[i], "type", ['patch','plane','rectangle', 'cylinder', 'sphere', 'triangle','patch']);
 
 	if(leafInfo.type == "rectangle"){
 		leafInfo.args.push(this.reader.getRGBA(leaf[i], "args"));
@@ -587,12 +587,19 @@ MySceneGraph.prototype.parseLeaves= function(rootElement) {
 		leafInfo.args.push(parseFloat(aux2[2].split(" ")[2]));
 	}
 	else if(leafInfo.type == "plane"){
-	//parts
+		//parts
 
-	var aux = this.reader.getFloat(leaf[i], "parts", true);
-	leafInfo.args.push(aux);
-	console.log(leafInfo.args); 
+		var aux = this.reader.getFloat(leaf[i], "parts", true);
+		leafInfo.args.push(aux);
+		console.log(leafInfo.args); 
 	}
+	else if(leafInfo.type == "patch"){
+		//var aux = this.reader.getFloat(leaf[i], "parts", true);
+		//leafInfo.args.push(aux);
+		//console.log(leafInfo.args); 
+	}
+
+
 
 	this.leaveslist.push(leafInfo);
 	}

@@ -1,5 +1,5 @@
 
-function Plane(scene, nrDivs) {
+function planenurbs(scene, nrDivs) {
    	CGFobject.call(this,scene);
     this.nrDivs = nrDivs;
       	
@@ -13,11 +13,11 @@ function Plane(scene, nrDivs) {
 	this.appearance.setShininess(120);
 }
 
-Plane.prototype = Object.create(CGFscene.prototype);
-Plane.prototype.constructor = Plane;
+planenurbs.prototype = Object.create(CGFscene.prototype);
+planenurbs.prototype.constructor = planenurbs;
 
 
-Plane.prototype.init = function () {
+planenurbs.prototype.init = function () {
 	CGFscene.prototype.init.call(this, application);
 
     this.setUpdatePeriod(500);
@@ -42,7 +42,7 @@ Plane.prototype.init = function () {
 
 };
 
-Plane.prototype.makeSurface = function (id, degree1, degree2, knots1, knots2, controlvertexes, translation) {
+planenurbs.prototype.makeSurface = function (id, degree1, degree2, knots1, knots2, controlvertexes, translation) {
 		
 	var nurbsSurface = new CGFnurbsSurface(degree1, degree2, knots1, knots2, controlvertexes);
 	getSurfacePoint = function(u, v) {
@@ -54,7 +54,7 @@ Plane.prototype.makeSurface = function (id, degree1, degree2, knots1, knots2, co
 	this.translations.push(translation);
 }
 
-Plane.prototype.display = function () 
+planenurbs.prototype.display = function () 
 {	
 	//this.appearance.apply();
 	for (i = 0; i < this.surfaces.length ; i++) {
