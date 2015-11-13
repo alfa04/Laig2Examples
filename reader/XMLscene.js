@@ -345,7 +345,7 @@ XMLscene.prototype.calcNodes = function(node, nodeTexture, nodeMaterial, nodeMat
 					break;
 				}
 			}
-
+			
 			//console.log(this.n);
 			this.nodesList.push(this.n);
 			continue;
