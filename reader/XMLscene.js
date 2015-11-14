@@ -257,8 +257,8 @@ XMLscene.prototype.setLeaves = function() {
                 this.leaveslist.push(triangle);
                 break;
             case "plane":
-                planenurbs = new planenurbs(this,leaf.args);
-                planenurbs.id = leaf.id;
+                planenurbs1 = new planenurbs(this,leaf.args);
+                planenurbs1.id = leaf.id;
                 this.leaveslist.push(planenurbs);
                 break;
 			 case "patch":

@@ -179,6 +179,12 @@
     <LEAF id="triangleKnife" type="triangle" args="-0.35 0.0 0.0  0.35 0.0 0.0  0.0 3.0 0.0" />
     <LEAF id="exemplo" type="plane" parts="5" />
     <LEAF id="exemplo" type="plane" parts="5" />
+    <LEAF id="ss" type="patch" order="1" partsU="2" partsV="3" >
+        <controlpoint x="2" y="2" z="2" />
+        <controlpoint x="2" y="2" z="2" />
+        <controlpoint x="2" y="2" z="2" />
+        <controlpoint x="2" y="2" z="2" />
+    </LEAF>
 
     <!-- Parameters of the above primitives:                                                         -->
         <!--rectangle: 2D coordinates for left-top and right-bottom vertices.                        -->
