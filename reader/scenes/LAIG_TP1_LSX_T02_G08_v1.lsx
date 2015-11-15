@@ -219,7 +219,6 @@
         <DESCENDANTS>
             <DESCENDANT id="square" />  
             <DESCENDANT id="tri" /> 
-            <DESCENDANT id="path" />     <!-- "ss" is the identifier of a node or of leaf; -->
                                          <!-- may be repeatad as necessary. It can refer an -->
                                          <!-- identifier of another node or leaf, later defined in the lsx file. -->
         </DESCENDANTS>
@@ -260,7 +259,9 @@
 
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
-            <DESCENDANT id="triangleKnife" />    <!-- "ss" is the identifier of a node or of leaf; -->
+            <DESCENDANT id="triangleKnife" />
+            <DESCENDANT id="path" />     <!-- "ss" is the identifier of a node or of leaf; -->
+                <!-- "ss" is the identifier of a node or of leaf; -->
               <!-- may be repeatad as necessary. It can refer an -->
                                          <!-- identifier of another node or leaf, later defined in the lsx file. -->
         </DESCENDANTS>

@@ -378,7 +378,7 @@ XMLscene.prototype.setAnimation = function(){
 		for (var j = 0; j < this.animationsList.length; j++) {
 			if(node["animationref"] == this.animationsList[j].id){
 				node["animationref"] = this.animationsList[j];
-				this.animsNo[this.animationsList[i].id] = false;
+				this.animsNo[this.animationsList[j].id] = false;
 			}
 		}
 	}
