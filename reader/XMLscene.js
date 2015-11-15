@@ -128,13 +128,13 @@ XMLscene.prototype.onGraphLoaded = function ()
 	for(var i = 0; i<this.graph.animationsList.length; i++){
 		this.animation = [];
 		if(this.graph.animationsList[i].type == "linear"){
-			this.animation = new LinearAnimation(this, this.graph.animationsList[i].span, this.graph.animationsList[i].controlPoint);
+			this.animation = new LinearAnimation(this.graph.animationsList[i].id, this.graph.animationsList[i].span, this.graph.animationsList[i].controlPoint);
 			this.animation["id"] = this.graph.animationsList[i].id;
 			this.animation["type"] = 'linear';
 		}
 
 		else if(this.graph.animationsList[i].type == "circular"){
-			this.animation = new CircularAnimation(this, this.graph.animationsList[i].span, this.graph.animationsList[i].center, this.graph.animationsList[i].radius,this.graph.animationsList[i].startang, this.graph.animationsList[i].rotang);
+			this.animation = new CircularAnimation(this.graph.animationsList[i].id, this.graph.animationsList[i].span, this.graph.animationsList[i].center, this.graph.animationsList[i].radius,this.graph.animationsList[i].startang, this.graph.animationsList[i].rotang);
 			this.animation["id"] = this.graph.animationsList[i].id;
 			this.animation["type"] = 'circular';
 		}

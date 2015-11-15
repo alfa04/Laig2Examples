@@ -514,11 +514,8 @@ MySceneGraph.prototype.parseAnimations= function(rootElement) {
 	}
 
 	else if(myAnimation.type == "circular"){
-		var aux = this.reader.getString(animationInfo, "center", true);
-		myAnimation.center.x = parseFloat(aux.split(" ")[0]);
-		myAnimation.center.y = parseFloat(aux.split(" ")[1]);
-		myAnimation.center.z = parseFloat(aux.split(" ")[2]);
-
+		myAnimation.center = this.reader.getVector3(animationInfo, 'center');
+            
 		myAnimation.radius = this.reader.getFloat(animationInfo, "radius", true);
 		myAnimation.startang = this.reader.getFloat(animationInfo, "startang", true);
 		myAnimation.rotang = this.reader.getFloat(animationInfo, "rotang", true);
