@@ -476,17 +476,17 @@ MySceneGraph.prototype.parseMaterials= function(rootElement) {
 //Parser ANIMATIONS
 MySceneGraph.prototype.parseAnimations= function(rootElement) {
 
-	console.log("ANIMATIONS: \n");
+	console.log("animations: \n");
 
 	this.animationsList = [];
 
-	var animations = rootElement.getElementsByTagName('ANIMATIONS');
-	if(animations == null) return "ANIMATIONS tag not found!";
+	var animations = rootElement.getElementsByTagName('animations');
+	if(animations == null) return "animations tag not found!";
 
 	var animationsInfo = animations[0];
 
-	var animation = animationsInfo.getElementsByTagName('ANIMATION');
-	if(animation == null) return "ANIMATION tag not found!";
+	var animation = animationsInfo.getElementsByTagName('animation');
+	if(animation == null) return "animation tag not found!";
 
 	for(var i = 0; i < animation.length; i++){
 

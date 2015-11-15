@@ -7,6 +7,8 @@ function CircularAnimation(id, span, center, radius, startang, rotang) {
     this.startang = startang;
     this.rotang = rotang;
 
+    this.finished = false;
+
     this.currentPos = 0;
 
     this.matrix = mat4.create();
@@ -43,4 +45,13 @@ CircularAnimation.prototype.update = function () {
 
     mat4.multiply(this.matrix, this.matrix, this.CircMatrix);
 
+}
+
+CircularAnimation.prototype.clone = function() {
+    return new CircularAnimation(this.id,
+        this.span,
+        this.center,
+        this.radius,
+        this.startang,
+        this.rotang);
 };

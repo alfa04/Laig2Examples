@@ -4,6 +4,7 @@ function LinearAnimation(id, span, controlPoint) {
     this.span = span;
     this.controlPoint = controlPoint;
     this.totalDist = 0;
+    this.finished = false;
 
     this.cpX = 0;
     this.cpY = 0;
@@ -118,6 +119,10 @@ LinearAnimation.prototype.calcVec = function () {
     if(this.cpZ.toFixed(2) == this.animat1z)
         this.movingZ = 1;
 
+   /* if(this.cpX.toFixed(2) == this.controlPoint[this.controlPoint.length-1][0] && this.cpY.toFixed(2) == this.controlPoint[this.controlPoint.length-1][1] && this.cpZ.toFixed(2) == this.controlPoint[this.controlPoint.length-1][2]){
+        this.finished = true;
+    }*/
+
     vec[0] = this.cpX;
     vec[1] = this.cpY;
     vec[2] = this.cpZ;
@@ -125,3 +130,9 @@ LinearAnimation.prototype.calcVec = function () {
     return vec;
 
 }
+
+LinearAnimation.prototype.clone = function() {
+    return new LinearAnimation(this.id,
+        this.span,
+        this.controlPoint);
+};

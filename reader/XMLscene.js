@@ -200,7 +200,7 @@ XMLscene.prototype.display = function () {
             if (node["texture"] != null) {
                 node["primitive"].updateTex(node["texture"].amplifFactor_S, node["texture"].amplifFactor_T);
             }
-            if(node["animationref"] != null){
+            if(node["animationref"] != null && node["animationref"].finished == false){
             	node["animationref"].update();
             	this.multMatrix(node["animationref"].matrix);
             }
@@ -370,11 +370,31 @@ XMLscene.prototype.calcNodes = function(node, nodeTexture, nodeMaterial, nodeMat
 };
 
 XMLscene.prototype.setAnimation = function(){
+
+	this.animsNo = [];
+
 	for(var i = 0; i < this.nodesList.length; i++){
 		var node = this.nodesList[i];
 		for (var j = 0; j < this.animationsList.length; j++) {
 			if(node["animationref"] == this.animationsList[j].id){
 				node["animationref"] = this.animationsList[j];
+				this.animsNo[this.animationsList[i].id] = false;
+			}
+		}
+	}
+
+	this.interface.enableAnims();
+}
+
+XMLscene.prototype.enableAnims = function(id, enabled) {
+    for(var i = 0; i < this.nodesList.length; i++){
+		var node = this.nodesList[i];
+		for (var j = 0; j < this.animationsList.length; j++) {
+			if(this.animationsList[j].id == id && node["animationref"].id == this.animationsList[j].id){
+				if(enabled){
+					node["animationref"].finished = true;
+	            	node["animationref"] = this.animationsList[j].clone();
+				}
 			}
 		}
 	}
