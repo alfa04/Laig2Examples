@@ -180,11 +180,16 @@
     <LEAF id="triangleKnife" type="triangle" args="0.0 0.0 3.0  0.35 0.0 0.0  -0.35 0.0 0.0" />
     <LEAF id="exemplo" type="plane" parts="5" />
     <LEAF id="exemplo" type="plane" parts="5" />
-    <LEAF id="ss" type="patch" order="1" partsU="2" partsV="3" >
-        <controlpoint x="2" y="2" z="2" />
-        <controlpoint x="2" y="2" z="2" />
-        <controlpoint x="2" y="2" z="2" />
-        <controlpoint x="2" y="2" z="2" />
+    <LEAF id="ss" type="patch" order="2" partsU="10" partsV="10" >
+            <controlpoint x="-1" y="-1" z="1" />
+            <controlpoint x="-0.5" y="0" z="0.5" />
+            <controlpoint x="-0.2" y="0.5" z="0" />
+            <controlpoint x="0" y="-1" z="1" />
+            <controlpoint x="0" y="0" z="5" />
+            <controlpoint x="0" y="0.5" z="0" />
+            <controlpoint x="1" y="-1" z="1" />
+            <controlpoint x="0.5" y="0" z="0.5" />
+            <controlpoint x="0.2" y="0.5" z="0" />
     </LEAF>
 
     <!-- Parameters of the above primitives:                                                         -->
@@ -213,11 +218,32 @@
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
             <DESCENDANT id="triangleKnife" />    <!-- "ss" is the identifier of a node or of leaf; -->
-                                         <!-- may be repeatad as necessary. It can refer an -->
+            <DESCENDANT id="path" />    <!-- may be repeatad as necessary. It can refer an -->
                                          <!-- identifier of another node or leaf, later defined in the lsx file. -->
         </DESCENDANTS>
 
-        <animationref id="ani2" />
+      <!--  <animationref id="ani2" /> -->
+
+    </NODE>
+    <NODE id="path">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="body" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="body" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+
+ 
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+             
+            <DESCENDANT id="ss" />        <!-- "ss" is the identifier of a node or of leaf; -->
+                                         <!-- may be repeatad as necessary. It can refer an -->
+                                         <!-- identifier of another node or leaf, later defined in the lsx file. -->
+        </DESCENDANTS>
 
     </NODE>
 

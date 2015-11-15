@@ -591,30 +591,24 @@ MySceneGraph.prototype.parseLeaves= function(rootElement) {
 		var partsV = this.reader.getFloat(leaf[i], "partsV", true);
 		leafInfo.args.push(partsV);
 
-		var controlPoints = [];
+		var cps = [];
+		var cps_list = leaf[i].getElementsByTagName('controlpoint');
+		for (var k = 0; k < cps_list.length; ++k) {
+			var cp = [];
+			cp[0] = this.reader.getFloat(cps_list[k], 'x');
+			cp[1] = this.reader.getFloat(cps_list[k], 'y');
+			cp[2] = this.reader.getFloat(cps_list[k], 'z');
+			cp[3] = 1;
+			cps.push(cp);
+		}
+		if (cps.length != Math.pow(order + 1, 2)) return "Invalid number of control points";
+		leafInfo.args.push(cps);
 
-				if(leaf[i].children.length != Math.pow((order + 1),2))
-					return "number of control points must be (order + 1)^2 in patch" + id;
-				index = 0;
-				
-				for (var j = 0; j < (order + 1); j++) {
-					var controlPointTemp = [];
-					for(var k = 0; k< (order + 1); k++){
-						var controlpoint = leaf[i].children[k + index];
-						var x = this.reader.getFloat(controlpoint, "x");
-						var y = this.reader.getFloat(controlpoint, "y");
-						var z = this.reader.getFloat(controlpoint, "z");
-						controlPointTemp.push(vec4.fromValues(x,y,z,1));
-					}
-					controlPoints.push(controlPointTemp);
-					index += order + 1;
-				}
-				leafInfo.args.push(controlPoints);
-				
 
 		console.log(leafInfo.args); 
+		
 	}
-	else if(leafInfo.type == "patch"){
+	else if(leafInfo.type == "vehicle"){
 		//var aux = this.reader.getFloat(leaf[i], "parts", true);
 		//leafInfo.args.push(aux);
 		//console.log(leafInfo.args); 
