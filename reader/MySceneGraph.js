@@ -604,8 +604,9 @@ MySceneGraph.prototype.parseLeaves= function(rootElement) {
 		if (cps.length != Math.pow(order + 1, 2)) return "Invalid number of control points";
 		leafInfo.args.push(cps);
 
-
+		console.log('Patch-----'); 
 		console.log(leafInfo.args); 
+		console.log('/Patch-----'); 
 		
 	}
 	else if(leafInfo.type == "vehicle"){

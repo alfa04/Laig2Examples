@@ -84,6 +84,11 @@
         <amplif_factor s="16.0" t="16.0" />                <!-- x/s, y/t -->
     </TEXTURE>
 
+    <TEXTURE id="bodyint">
+        <file path="textures/bodyint.jpg" />                             <!-- path to file -->
+        <amplif_factor s="16.0" t="16.0" />                <!-- x/s, y/t -->
+    </TEXTURE>
+
     <!-- NOTE: this block "TEXTURE" must be repeated as necessary with different "id" -->
     
 </TEXTURES>
@@ -180,6 +185,7 @@
     <LEAF id="triangleKnife" type="triangle" args="0.0 0.0 3.0  0.35 0.0 0.0  -0.35 0.0 0.0" />
     <LEAF id="exemplo" type="plane" parts="5" />
     <LEAF id="exemplo" type="plane" parts="5" />
+   
     <LEAF id="ss" type="patch" order="2" partsU="10" partsV="10" >
             <controlpoint x="-1" y="-1" z="1" />
             <controlpoint x="-0.5" y="0" z="0.5" />
@@ -191,7 +197,105 @@
             <controlpoint x="0.5" y="0" z="0.5" />
             <controlpoint x="0.2" y="0.5" z="0" />
     </LEAF>
+    <LEAF id="sa" type="patch" order="1" partsU="10" partsV="10" >
+            <controlpoint x="-2" y="-1" z="1" />
+            <controlpoint x="-0.5" y="0" z="0.5" />
+            <controlpoint x="-0.2" y="0.5" z="0" />
+            <controlpoint x="0" y="-1" z="1" />
+</LEAF>
 
+    <LEAF id="frentecasco" type="patch" order="3" partsU="10" partsV="10" >
+            <controlpoint x="-1" y="0" z="3" />
+            <controlpoint x="-1" y="0" z="2" />
+            <controlpoint x="-1" y="0" z="1" />
+            <controlpoint x="0" y="0" z="0" />
+
+            <controlpoint x="-0.2" y="1" z="3" />
+            <controlpoint x="-0.2" y="1" z="2" />
+            <controlpoint x="-0.2" y="1" z="1" />
+            <controlpoint x="0" y="0" z="0" />
+
+            <controlpoint x="0.2" y="1" z="3" />
+            <controlpoint x="0.2" y="1" z="2" />
+            <controlpoint x="0.2" y="1" z="1" />
+            <controlpoint x="0" y="0" z="0" />
+
+            <controlpoint x="1" y="0" z="3" />
+            <controlpoint x="1" y="0" z="2" />
+            <controlpoint x="1" y="0" z="1" />
+            <controlpoint x="0" y="0" z="0" />
+
+    </LEAF>
+      <LEAF id="interiorcascofrente" type="patch" order="3" partsU="10" partsV="10" >
+
+            <controlpoint x="1" y="0" z="3" />
+            <controlpoint x="1" y="0" z="2" />
+            <controlpoint x="1" y="0" z="1" />
+            <controlpoint x="0" y="0" z="0" />
+            
+            <controlpoint x="0.2" y="1" z="3" />
+            <controlpoint x="0.2" y="1" z="2" />
+            <controlpoint x="0.2" y="1" z="1" />
+            <controlpoint x="0" y="0" z="0" />
+
+            <controlpoint x="-0.2" y="1" z="3" />
+            <controlpoint x="-0.2" y="1" z="2" />
+            <controlpoint x="-0.2" y="1" z="1" />
+            <controlpoint x="0" y="0" z="0" />
+
+            <controlpoint x="-1" y="0" z="3" />
+            <controlpoint x="-1" y="0" z="2" />
+            <controlpoint x="-1" y="0" z="1" />
+            <controlpoint x="0" y="0" z="0" />
+
+    </LEAF>
+         <LEAF id="interiorcascotras" type="patch" order="3" partsU="10" partsV="10" >
+
+            <controlpoint x="0" y="0" z="4" />
+            <controlpoint x="1" y="0" z="3.7" />
+            <controlpoint x="1" y="0" z="3.3" />
+            <controlpoint x="1" y="0" z="3" />
+
+            <controlpoint x="0.2" y="0" z="4" />
+            <controlpoint x="0.2" y="1" z="3.7" />
+            <controlpoint x="0.2" y="1" z="3.3" />
+            <controlpoint x="0.2" y="1" z="3" />
+
+            <controlpoint x="-0.2" y="0" z="4" />
+            <controlpoint x="-0.2" y="1" z="3.7" />
+            <controlpoint x="-0.2" y="1" z="3.3" />
+            <controlpoint x="-0.2" y="1" z="3" />
+
+            
+            <controlpoint x="0" y="0" z="4" />
+            <controlpoint x="-1" y="0" z="3.7" />
+            <controlpoint x="-1" y="0" z="3.3" />
+            <controlpoint x="-1" y="0" z="3" />
+
+
+    </LEAF>
+       <LEAF id="trascasco" type="patch" order="3" partsU="10" partsV="10" >
+            <controlpoint x="0" y="0" z="4" />
+            <controlpoint x="-1" y="0" z="3.7" />
+            <controlpoint x="-1" y="0" z="3.3" />
+            <controlpoint x="-1" y="0" z="3" />
+
+            <controlpoint x="-0.2" y="0" z="4" />
+            <controlpoint x="-0.2" y="1" z="3.7" />
+            <controlpoint x="-0.2" y="1" z="3.3" />
+            <controlpoint x="-0.2" y="1" z="3" />
+
+            <controlpoint x="0.2" y="0" z="4" />
+            <controlpoint x="0.2" y="1" z="3.7" />
+            <controlpoint x="0.2" y="1" z="3.3" />
+            <controlpoint x="0.2" y="1" z="3" />
+            
+            <controlpoint x="0" y="0" z="4" />
+            <controlpoint x="1" y="0" z="3.7" />
+            <controlpoint x="1" y="0" z="3.3" />
+            <controlpoint x="1" y="0" z="3" />
+
+    </LEAF>
     <!-- Parameters of the above primitives:                                                         -->
         <!--rectangle: 2D coordinates for left-top and right-bottom vertices.                        -->
         <!-- cylinder:  height, bottom radius, top radius, sections along height, parts per section  -->
@@ -260,35 +364,35 @@
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
             <DESCENDANT id="triangleKnife" />
-            <DESCENDANT id="path" />     <!-- "ss" is the identifier of a node or of leaf; -->
+            <DESCENDANT id="barco" />     <!-- "ss" is the identifier of a node or of leaf; -->
                 <!-- "ss" is the identifier of a node or of leaf; -->
               <!-- may be repeatad as necessary. It can refer an -->
                                          <!-- identifier of another node or leaf, later defined in the lsx file. -->
         </DESCENDANTS>
 
-        <animationref id="ani1" />
+       <!--   <animationref id="ani1" /> -->
       <!--  <animationref id="ani2" /> -->
 
     </NODE>
     
-    <NODE id="path">       <!--   defines one intermediate node; may be repeated as necessary -->
+    <NODE id="barco">       
 
-        <!-- next two lines are mandatory -->
-        <MATERIAL id="body" />      <!-- declared material superimposes the material received from parent node -->
-                                  <!-- id="null" maintains material from parent node        -->
-        <TEXTURE id="body" />       <!-- declared texture superimposes the texture received from parent node -->
-                                  <!-- id="null" maintains texture from parent node       -->
-                                  <!-- id="clear" clears texture declaration received from parent node      -->
+        <MATERIAL id="body" />      
+        <TEXTURE id="body" /> 
+        <DESCENDANTS>     
+              <DESCENDANT id="trascasco" />  
+              <DESCENDANT id="frentecasco" /> 
+              <DESCENDANT id="interior" />      
+        </DESCENDANTS>
 
-
- 
-
-        <!-- declaring descendents, ate least one node or one leaf must be present -->
+    </NODE>
+        <NODE id="interior">   
+        <MATERIAL id="body" />    
+        <TEXTURE id="bodyint" />   
+         
         <DESCENDANTS>
-             
-            <DESCENDANT id="ss" />        <!-- "ss" is the identifier of a node or of leaf; -->
-                                         <!-- may be repeatad as necessary. It can refer an -->
-                                         <!-- identifier of another node or leaf, later defined in the lsx file. -->
+              <DESCENDANT id="interiorcascotras" />
+              <DESCENDANT id="interiorcascofrente" />        
         </DESCENDANTS>
 
     </NODE>

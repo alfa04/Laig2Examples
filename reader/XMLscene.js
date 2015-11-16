@@ -262,9 +262,13 @@ XMLscene.prototype.setLeaves = function() {
                 this.leaveslist.push(planenurbs);
                 break;
 			 case "patch":
-                patch = new patch(this,leaf.args);
-                patch.id = leaf.id;
-                this.leaveslist.push(patch);
+			 console.log("PATCHHHH----");
+			   
+			    console.log(leaf.args);
+			     console.log("/PATCHHHH----");
+                patch1 = new patch(this,leaf.args);
+                patch1.id = leaf.id;
+                this.leaveslist.push(patch1);
                 break;
 
         }
