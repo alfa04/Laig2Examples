@@ -163,12 +163,12 @@
 </MATERIALS>
 
 <animations>
-    <animation id="ani1" span="10.0" type="linear">
+    <animation id="ani1" span="5.0" type="linear">
+        <controlpoint xx="0.0" yy="0.0" zz="0.0" />
         <controlpoint xx="5.0" yy="0.0" zz="0.0" />
         <controlpoint xx="5.0" yy="5.0" zz="0.0" />
-        <controlpoint xx="0.0" yy="5.0" zz="0.0" />
     </animation>
-    <animation id="ani2" span="10.0" type="circular" center="0 0 0" radius="0" startang="0" rotang="360" />
+    <animation id="ani2" span="5.0" type="circular" center="0 0 0" radius="10.0" startang="0" rotang="10" />
 </animations>
 
 <LEAVES>

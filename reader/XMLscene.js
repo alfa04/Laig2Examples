@@ -1,7 +1,7 @@
 
 function XMLscene() {
     CGFscene.call(this);
-}
+};
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
 XMLscene.prototype.constructor = XMLscene;
@@ -26,7 +26,12 @@ XMLscene.prototype.init = function (application) {
 
 	this.axis=new CGFaxis(this);
 
-}
+
+    this.timeNow = new Date().getTime();
+
+	this.setUpdatePeriod(10);
+
+};
 
 XMLscene.prototype.initLights = function () {
 
@@ -123,26 +128,7 @@ XMLscene.prototype.onGraphLoaded = function ()
 		this.materialsList.push(this.material);	
 	}  
 
-	//ANIMATIONS
-
-	for(var i = 0; i<this.graph.animationsList.length; i++){
-		this.animation = [];
-		if(this.graph.animationsList[i].type == "linear"){
-			this.animation = new LinearAnimation(this.graph.animationsList[i].id, this.graph.animationsList[i].span, this.graph.animationsList[i].controlPoint);
-			this.animation["id"] = this.graph.animationsList[i].id;
-			this.animation["type"] = 'linear';
-		}
-
-		else if(this.graph.animationsList[i].type == "circular"){
-			this.animation = new CircularAnimation(this.graph.animationsList[i].id, this.graph.animationsList[i].span, this.graph.animationsList[i].center, this.graph.animationsList[i].radius,this.graph.animationsList[i].startang, this.graph.animationsList[i].rotang);
-			this.animation["id"] = this.graph.animationsList[i].id;
-			this.animation["type"] = 'circular';
-		}
-		
-		this.animationsList.push(this.animation);	
-	} 
-
-
+	
     //LEAVES
     this.setLeaves();
 
@@ -150,7 +136,35 @@ XMLscene.prototype.onGraphLoaded = function ()
     //NODES
     this.setNodes();
 
+    //ANIMATIONS
+    for(var i = 0; i < this.nodesList.length; i++){
+        var node = this.nodesList[i];
+        //console.log(node.id);
+		for(var j = 0; j<this.graph.animationsList.length; j++){
+			//console.log(this.graph.animationsList[j].id+ "node" + node["animationref"]);
+
+			if(node["animationref"] == this.graph.animationsList[j].id){
+				
+
+				this.animation = [];
+				if(this.graph.animationsList[j].type == "linear"){
+					this.animation = new LinearAnimation(this.graph.animationsList[j].id, this.graph.animationsList[j].span, this.graph.animationsList[j].controlPoint);
+					this.animation["type"] = 'linear';
+				}
+
+				else if(this.graph.animationsList[j].type == "circular"){
+					this.animation = new CircularAnimation(this.graph.animationsList[j].id, this.graph.animationsList[j].span, this.graph.animationsList[j].center, this.graph.animationsList[j].radius,this.graph.animationsList[j].startang, this.graph.animationsList[j].rotang);
+					this.animation["type"] = 'circular';
+				}
+				
+				this.animationsList.push(this.animation);	
+			}
+		} 
+	}
+
     this.setAnimation();
+
+    this.fixAnims();
 };
 
 XMLscene.prototype.display = function () {
@@ -201,9 +215,8 @@ XMLscene.prototype.display = function () {
                 node["primitive"].updateTex(node["texture"].amplifFactor_S, node["texture"].amplifFactor_T);
             }
             if(node["animationref"] != null && node["animationref"].finished == false){
-            	node["animationref"].update();
             	this.multMatrix(node["animationref"].matrix);
-            }
+			}
             node["material"].apply();
             this.multMatrix(node["matrix"]);
             node["primitive"].display();
@@ -270,6 +283,7 @@ XMLscene.prototype.setLeaves = function() {
                 patch1.id = leaf.id;
                 this.leaveslist.push(patch1);
                 break;
+
 
         }
 	}
@@ -380,6 +394,8 @@ XMLscene.prototype.setAnimation = function(){
 	for(var i = 0; i < this.nodesList.length; i++){
 		var node = this.nodesList[i];
 		for (var j = 0; j < this.animationsList.length; j++) {
+
+				console.log(this.animationsList.length);
 			if(node["animationref"] == this.animationsList[j].id){
 				node["animationref"] = this.animationsList[j];
 				this.animsNo[this.animationsList[j].id] = false;
@@ -388,21 +404,39 @@ XMLscene.prototype.setAnimation = function(){
 	}
 
 	this.interface.enableAnims();
-}
+};
+
+XMLscene.prototype.fixAnims = function() {
+    for(var i = 0; i < this.nodesList.length; i++){
+		var node = this.nodesList[i];
+		var done = 0;
+		for (var j = 0; j < this.animationsList.length; j++) {
+			if(node["animationref"].id == this.animationsList[j].id && done == 0){
+					done = 1;
+					node["animationref"].finished = true;
+	            	node["animationref"] = this.animationsList[j].clone();
+			}
+		}
+	}
+
+};
 
 XMLscene.prototype.enableAnims = function(id, enabled) {
     for(var i = 0; i < this.nodesList.length; i++){
 		var node = this.nodesList[i];
+		var done = 0;
 		for (var j = 0; j < this.animationsList.length; j++) {
-			if(this.animationsList[j].id == id && node["animationref"].id == this.animationsList[j].id){
+			if(this.animationsList[j].id == id && node["animationref"].id == this.animationsList[j].id && done == 0){
 				if(enabled){
+					done = 1;
 					node["animationref"].finished = true;
 	            	node["animationref"] = this.animationsList[j].clone();
 				}
 			}
 		}
 	}
-}
+
+};
 
 XMLscene.prototype.enableL = function(id, enabled) {
     for (var i = 0; i < this.lights.length; i++) {
@@ -412,4 +446,16 @@ XMLscene.prototype.enableL = function(id, enabled) {
             else this.lights[i].disable();
         }
     }
+};
+
+XMLscene.prototype.update = function(timeNow) {
+    var step = timeNow - this.timeNow;
+    this.timeNow = timeNow;
+
+    for(var i = 0; i < this.nodesList.length; i++){
+		if(this.nodesList[i]["animationref"] != null && this.nodesList[i]["animationref"].finished == false){
+            this.nodesList[i]["animationref"].update(step);
+           // console.log(step);
+		}
+	}
 };

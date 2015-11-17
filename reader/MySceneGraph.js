@@ -606,7 +606,7 @@ MySceneGraph.prototype.parseLeaves= function(rootElement) {
 
 		console.log('Patch-----'); 
 		console.log(leafInfo.args); 
-		console.log('/Patch-----'); 
+		console.log('/Patch-----');
 		
 	}
 	else if(leafInfo.type == "vehicle"){
