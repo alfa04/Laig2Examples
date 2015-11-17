@@ -85,7 +85,19 @@
     </TEXTURE>
 
     <TEXTURE id="bodyint">
-        <file path="textures/bodyint.jpg" />                             <!-- path to file -->
+        <file path="textures/wood2.jpg" />                             <!-- path to file -->
+        <amplif_factor s="16.0" t="16.0" />                <!-- x/s, y/t -->
+    </TEXTURE>
+    <TEXTURE id="tabua">
+        <file path="textures/tabua.jpg" />                             <!-- path to file -->
+        <amplif_factor s="16.0" t="16.0" />                <!-- x/s, y/t -->
+    </TEXTURE>
+    <TEXTURE id="bandeira">
+        <file path="textures/romenia.jpg" />                             <!-- path to file -->
+        <amplif_factor s="16.0" t="16.0" />                <!-- x/s, y/t -->
+    </TEXTURE>
+    <TEXTURE id="bandeira1">
+        <file path="textures/romenia1.jpg" />                             <!-- path to file -->
         <amplif_factor s="16.0" t="16.0" />                <!-- x/s, y/t -->
     </TEXTURE>
 
@@ -296,6 +308,115 @@
             <controlpoint x="1" y="0" z="3" />
 
     </LEAF>
+       <LEAF id="tabua" type="patch" order="2" partsU="10" partsV="10" >
+            <controlpoint x="1" y="0" z="3" />
+            <controlpoint x="1" y="0" z="2.8" />
+            <controlpoint x="1" y="0" z="2.6" />
+
+            <controlpoint x="0" y="0" z="3" />
+            <controlpoint x="0" y="0" z="2.8" />
+            <controlpoint x="0" y="0" z="2.6" />
+
+            <controlpoint x="-1" y="0" z="3" />
+            <controlpoint x="-1" y="0" z="2.8" />
+            <controlpoint x="-1" y="0" z="2.6" />
+
+
+    </LEAF>
+       <LEAF id="pau" type="patch" order="3" partsU="10" partsV="10" >
+            <controlpoint x="-.5" y="0" z="6" />
+            <controlpoint x="-0.1" y="0" z="4" />
+            <controlpoint x="-0.1" y="0" z="2" />
+            <controlpoint x="-0.1" y="0" z="0" />
+
+            <controlpoint x="0.5" y="0" z="6" />
+            <controlpoint x="0.1" y="0" z="4" />
+            <controlpoint x="0.1" y="0" z="2" />
+            <controlpoint x="0.1" y="0" z="0" />
+
+            <controlpoint x="0" y="-0.5" z="6" />
+            <controlpoint x="0" y="-0.2" z="4" />
+            <controlpoint x="0" y="-0.2" z="2" />
+            <controlpoint x="0" y="-0.2" z="0" />
+            
+            <controlpoint x="-0.5" y="0" z="6" />
+            <controlpoint x="-0.1" y="0" z="4" />
+            <controlpoint x="-0.1" y="0" z="2" />
+            <controlpoint x="-0.1" y="0" z="0" />
+
+    </LEAF>
+         <LEAF id="mastro" type="patch" order="3" partsU="10" partsV="10" >
+            <controlpoint x="-.1" y="0" z="6" />
+            <controlpoint x="-0.1" y="0" z="4" />
+            <controlpoint x="-0.1" y="0" z="2" />
+            <controlpoint x="-0.1" y="0" z="0" />
+
+            <controlpoint x="0.1" y="0" z="6" />
+            <controlpoint x="0.1" y="0" z="4" />
+            <controlpoint x="0.1" y="0" z="2" />
+            <controlpoint x="0.1" y="0" z="0" />
+
+            <controlpoint x="0" y="-0.2" z="6" />
+            <controlpoint x="0" y="-0.2" z="4" />
+            <controlpoint x="0" y="-0.2" z="2" />
+            <controlpoint x="0" y="-0.2" z="0" />
+            
+            <controlpoint x="-0.1" y="0" z="6" />
+            <controlpoint x="-0.1" y="0" z="4" />
+            <controlpoint x="-0.1" y="0" z="2" />
+            <controlpoint x="-0.1" y="0" z="0" />
+
+    </LEAF>
+     <LEAF id="bandeira" type="patch" order="3" partsU="10" partsV="10" >
+            <controlpoint x="0" y="-4" z="0" />
+            <controlpoint x="0" y="-3" z="0" />
+            <controlpoint x="0" y="-2" z="0" />
+            <controlpoint x="0" y="-1" z="0" />
+
+            <controlpoint x="0.1" y="0" z="6" />
+            <controlpoint x="0.1" y="0" z="4" />
+            <controlpoint x="0.1" y="0" z="2" />
+            <controlpoint x="0.1" y="0" z="0" />
+
+            <controlpoint x="0" y="-0.2" z="6" />
+            <controlpoint x="0" y="-0.2" z="4" />
+            <controlpoint x="0" y="-0.2" z="2" />
+            <controlpoint x="0" y="-0.2" z="0" />
+            
+            <controlpoint x="-0.1" y="0" z="6" />
+            <controlpoint x="-0.1" y="0" z="4" />
+            <controlpoint x="-0.1" y="0" z="2" />
+            <controlpoint x="-0.1" y="0" z="0" />
+
+    </LEAF>
+    <LEAF id="bandeira1" type="patch" order="3" partsU="10" partsV="10" >
+                <controlpoint x="-0.1" y="0" z="6" />
+            <controlpoint x="-0.1" y="0" z="4" />
+            <controlpoint x="-0.1" y="0" z="2" />
+            <controlpoint x="-0.1" y="0" z="0" />
+
+                        <controlpoint x="0" y="-0.2" z="6" />
+            <controlpoint x="0" y="-0.2" z="4" />
+            <controlpoint x="0" y="-0.2" z="2" />
+            <controlpoint x="0" y="-0.2" z="0" />
+
+             <controlpoint x="0.1" y="0" z="6" />
+            <controlpoint x="0.1" y="0" z="4" />
+            <controlpoint x="0.1" y="0" z="2" />
+            <controlpoint x="0.1" y="0" z="0" />
+
+            <controlpoint x="0" y="-4" z="0" />
+            <controlpoint x="0" y="-3" z="0" />
+            <controlpoint x="0" y="-2" z="0" />
+            <controlpoint x="0" y="-1" z="0" />
+
+
+
+
+            
+
+
+    </LEAF>
     <!-- Parameters of the above primitives:                                                         -->
         <!--rectangle: 2D coordinates for left-top and right-bottom vertices.                        -->
         <!-- cylinder:  height, bottom radius, top radius, sections along height, parts per section  -->
@@ -382,7 +503,9 @@
         <DESCENDANTS>     
               <DESCENDANT id="trascasco" />  
               <DESCENDANT id="frentecasco" /> 
-              <DESCENDANT id="interior" />      
+              <DESCENDANT id="interior" />
+              <DESCENDANT id="bandeiranode" />     
+              <DESCENDANT id="bandeiranode1" />
         </DESCENDANTS>
 
     </NODE>
@@ -392,7 +515,62 @@
          
         <DESCENDANTS>
               <DESCENDANT id="interiorcascotras" />
-              <DESCENDANT id="interiorcascofrente" />        
+              <DESCENDANT id="interiorcascofrente" />    
+              <DESCENDANT id="tabuanode" /> 
+        </DESCENDANTS>
+
+    </NODE>
+        <NODE id="tabuanode">   
+        <MATERIAL id="body" />    
+        <TEXTURE id="tabua" /> 
+         
+        <DESCENDANTS>  
+              <DESCENDANT id="tabua" /> 
+              <DESCENDANT id="paunode" /> 
+              <DESCENDANT id="mastronode" /> 
+        </DESCENDANTS>
+
+    </NODE>
+        <NODE id="paunode">   
+        <MATERIAL id="body" />    
+        <TEXTURE id="tabua" /> 
+        <TRANSLATION x="0" y="0" z="4" />
+        <ROTATION axis="x" angle="-40.0" />
+        <TRANSLATION x="0" y="0" z="-3" />
+        <DESCENDANTS>  
+              <DESCENDANT id="pau" /> 
+        </DESCENDANTS>
+
+    </NODE>
+        <NODE id="mastronode">   
+        <MATERIAL id="body" />    
+        <TEXTURE id="tabua" /> 
+        <TRANSLATION x="0" y="-2.5" z="2.5" />
+        <ROTATION axis="x" angle="-90.0" />
+        <TRANSLATION x="0" y="0" z="-3" />
+        <DESCENDANTS>  
+              <DESCENDANT id="mastro" /> 
+        </DESCENDANTS>
+
+    </NODE>
+    <NODE id="bandeiranode">   
+        <MATERIAL id="body" />    
+        <TEXTURE id="bandeira" /> 
+
+        <TRANSLATION x="0" y="-1.5" z="2.5" />
+        <DESCENDANTS>  
+              <DESCENDANT id="bandeira" /> 
+        </DESCENDANTS>
+
+    </NODE>
+      <NODE id="bandeiranode1">   
+        <MATERIAL id="body" />    
+        <TEXTURE id="bandeira1" /> 
+
+        <TRANSLATION x="0" y="-1.5" z="2.5" />
+        
+        <DESCENDANTS>  
+              <DESCENDANT id="bandeira1" /> 
         </DESCENDANTS>
 
     </NODE>
