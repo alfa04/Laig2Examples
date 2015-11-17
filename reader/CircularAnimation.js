@@ -7,6 +7,8 @@ function CircularAnimation(id, span, center, radius, startang, rotang) {
     this.startang = startang;
     this.rotang = rotang;
 
+    this.type = "circular";
+
     this.finished = false;
 
     this.currentPos = 0;
@@ -31,9 +33,11 @@ function CircularAnimation(id, span, center, radius, startang, rotang) {
 CircularAnimation.prototype = Object.create(Animation.prototype);
 CircularAnimation.prototype.constructor = CircularAnimation;
 
-CircularAnimation.prototype.update = function () {
+CircularAnimation.prototype.update = function (step) {
 
-    var step = this.span/1000;
+    step = step/1000;
+
+    //console.log(this.currentPos);
 
     this.currentPos = Math.min(this.span, this.currentPos + step);
 
@@ -42,6 +46,9 @@ CircularAnimation.prototype.update = function () {
 
     var ang = this.rotang * (this.currentPos / this.span);
     mat4.rotateY(this.matrix, this.matrix, ang);
+
+   // console.log(this.currentPos);
+   // console.log(ang);
 
     mat4.multiply(this.matrix, this.matrix, this.CircMatrix);
 

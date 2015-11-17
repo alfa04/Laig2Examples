@@ -19,28 +19,30 @@ function LinearAnimation(id, span, controlPoint) {
     this.matrix = mat4.create();
 
     for(var i = 0; i < this.controlPoint.length-1; i++){
-    	var dx = this.controlPoint[i+1][0] - this.controlPoint[i][0];
-    	var dy = this.controlPoint[i+1][1] - this.controlPoint[i][1];
-    	var dz = this.controlPoint[i+1][2] - this.controlPoint[i][2];
+        var dx = this.controlPoint[i+1][0] - this.controlPoint[i][0];
+        var dy = this.controlPoint[i+1][1] - this.controlPoint[i][1];
+        var dz = this.controlPoint[i+1][2] - this.controlPoint[i][2];
 
-    	this.dist2points = Math.sqrt(dx*dx + dy*dy + dz*dz);
+        this.dist2points = Math.sqrt(dx*dx + dy*dy + dz*dz);
 
         this.totalDist += this.dist2points;
 
     }
-
-    this.speed = 0.02 * this.totalDist/this.span;
-    
 }
 
 LinearAnimation.prototype = Object.create(Animation.prototype);
 LinearAnimation.prototype.constructor = LinearAnimation;
 
-LinearAnimation.prototype.update = function () {
+LinearAnimation.prototype.update = function (step) {
+
+    this.speed = step/1000 * this.totalDist/this.span;
+
+    //console.log(this.speed);
 
     var v = this.calcVec();
-     
+
     var vecR = vec3.fromValues(v[0], 0, v[2]);
+
     var rotAng;
 
     vec3.normalize(vecR, vecR);
@@ -48,7 +50,7 @@ LinearAnimation.prototype.update = function () {
 
     rotAng *= this.signal;
 
-    console.log(rotAng);
+    //console.log(rotAng);
 
     mat4.identity(this.matrix);
     mat4.translate(this.matrix, this.matrix, v);
@@ -102,7 +104,7 @@ LinearAnimation.prototype.calcVec = function () {
         this.animat1z  = this.controlPoint[this.idx][2];
     }
 
-    if(this.idx < this.controlPoint.length - 1 && this.animat1x == this.cpX.toFixed(2) && this.animat1y == this.cpY.toFixed(2) && this.animat1z == this.cpZ.toFixed(2)){
+    if(this.idx < this.controlPoint.length - 1 && (this.cpX.toFixed(2) == this.animat1x || (Math.abs(this.cpX.toFixed(2) - this.animat1x)) <0.08) && (this.cpY.toFixed(2) == this.animat1y || (Math.abs(this.cpY.toFixed(2) - this.animat1y)) <0.08) && (this.cpZ.toFixed(2) == this.animat1z || (Math.abs(this.cpZ.toFixed(2) - this.animat1z)) <0.08)){
         this.idx+= 1;
         this.movingX = 0;
         this.movingY = 0;
@@ -111,17 +113,13 @@ LinearAnimation.prototype.calcVec = function () {
         this.animat1y  = this.controlPoint[this.idx][1];
         this.animat1z  = this.controlPoint[this.idx][2];
     }
-          
-    if(this.cpX.toFixed(2) == this.animat1x)
-        this.movingX = 1;
-    if(this.cpY.toFixed(2) == this.animat1y)
-        this.movingY = 1;
-    if(this.cpZ.toFixed(2) == this.animat1z)
-        this.movingZ = 1;
 
-   /* if(this.cpX.toFixed(2) == this.controlPoint[this.controlPoint.length-1][0] && this.cpY.toFixed(2) == this.controlPoint[this.controlPoint.length-1][1] && this.cpZ.toFixed(2) == this.controlPoint[this.controlPoint.length-1][2]){
-        this.finished = true;
-    }*/
+    if(this.cpX.toFixed(2) == this.animat1x || (Math.abs(this.cpX.toFixed(2) - this.animat1x)) <0.08)
+        this.movingX = 1;
+    if(this.cpY.toFixed(2) == this.animat1y || (Math.abs(this.cpY.toFixed(2) - this.animat1y)) <0.08)
+          this.movingY = 1;
+    if(this.cpZ.toFixed(2) == this.animat1z || (Math.abs(this.cpZ.toFixed(2) - this.animat1z)) <0.08)
+        this.movingZ = 1;
 
     vec[0] = this.cpX;
     vec[1] = this.cpY;
