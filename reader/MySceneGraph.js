@@ -591,18 +591,20 @@ MySceneGraph.prototype.parseLeaves= function(rootElement) {
 		var partsV = this.reader.getFloat(leaf[i], "partsV", true);
 		leafInfo.args.push(partsV);
 
-		var cps = [];
-		var cps_list = leaf[i].getElementsByTagName('controlpoint');
-		for (var k = 0; k < cps_list.length; ++k) {
-			var cp = [];
-			cp[0] = this.reader.getFloat(cps_list[k], 'x');
-			cp[1] = this.reader.getFloat(cps_list[k], 'y');
-			cp[2] = this.reader.getFloat(cps_list[k], 'z');
-			cp[3] = 1;
-			cps.push(cp);
+		var controlpoints = [];
+		var controlpointslist = leaf[i].getElementsByTagName('controlpoint');
+		for (var k = 0; k < controlpointslist.length; ++k) {
+			var aux = [];
+
+			aux[0] = this.reader.getFloat(controlpointslist[k], 'x');
+			aux[1] = this.reader.getFloat(controlpointslist[k], 'y');
+			aux[2] = this.reader.getFloat(controlpointslist[k], 'z');
+			aux[3] = 1;
+
+			controlpoints.push(aux);
 		}
-		if (cps.length != Math.pow(order + 1, 2)) return "Invalid number of control points";
-		leafInfo.args.push(cps);
+		if (controlpoints.length != Math.pow(order + 1, 2)) return "Changes control points number";
+		leafInfo.args.push(controlpoints);
 
 		console.log('Patch-----'); 
 		console.log(leafInfo.args); 

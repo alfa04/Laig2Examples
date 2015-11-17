@@ -149,13 +149,11 @@ XMLscene.prototype.onGraphLoaded = function ()
 				this.animation = [];
 				if(this.graph.animationsList[j].type == "linear"){
 					this.animation = new LinearAnimation(this.graph.animationsList[j].id, this.graph.animationsList[j].span, this.graph.animationsList[j].controlPoint);
-					this.animation["id"] = this.graph.animationsList[j].id;
 					this.animation["type"] = 'linear';
 				}
 
 				else if(this.graph.animationsList[j].type == "circular"){
 					this.animation = new CircularAnimation(this.graph.animationsList[j].id, this.graph.animationsList[j].span, this.graph.animationsList[j].center, this.graph.animationsList[j].radius,this.graph.animationsList[j].startang, this.graph.animationsList[j].rotang);
-					this.animation["id"] = this.graph.animationsList[j].id;
 					this.animation["type"] = 'circular';
 				}
 				
@@ -277,10 +275,9 @@ XMLscene.prototype.setLeaves = function() {
                 this.leaveslist.push(planenurbs);
                 break;
 			 case "patch":
-			 console.log("PATCHHHH----");
-			   
+			 	console.log("PATCHHHH----");
 			    console.log(leaf.args);
-			     console.log("/PATCHHHH----");
+			    console.log("/PATCHHHH----");
                 patch1 = new patch(this,leaf.args);
                 patch1.id = leaf.id;
                 this.leaveslist.push(patch1);
@@ -396,6 +393,8 @@ XMLscene.prototype.setAnimation = function(){
 	for(var i = 0; i < this.nodesList.length; i++){
 		var node = this.nodesList[i];
 		for (var j = 0; j < this.animationsList.length; j++) {
+
+				console.log(this.animationsList.length);
 			if(node["animationref"] == this.animationsList[j].id){
 				node["animationref"] = this.animationsList[j];
 				this.animsNo[this.animationsList[j].id] = false;
@@ -411,7 +410,7 @@ XMLscene.prototype.fixAnims = function() {
 		var node = this.nodesList[i];
 		var done = 0;
 		for (var j = 0; j < this.animationsList.length; j++) {
-			if(node["animationref"] != null && node["animationref"].id == this.animationsList[j].id && done == 0){
+			if(node["animationref"].id == this.animationsList[j].id && done == 0){
 					done = 1;
 					node["animationref"].finished = true;
 	            	node["animationref"] = this.animationsList[j].clone();
@@ -426,7 +425,7 @@ XMLscene.prototype.enableAnims = function(id, enabled) {
 		var node = this.nodesList[i];
 		var done = 0;
 		for (var j = 0; j < this.animationsList.length; j++) {
-			if(node["animationref"] != null && this.animationsList[j].id == id && node["animationref"].id == this.animationsList[j].id && done == 0){
+			if(this.animationsList[j].id == id && node["animationref"].id == this.animationsList[j].id && done == 0){
 				if(enabled){
 					done = 1;
 					node["animationref"].finished = true;

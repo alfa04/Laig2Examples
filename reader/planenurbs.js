@@ -7,10 +7,10 @@ function planenurbs(scene, nrDivs) {
    	this.translations = [];
 
 	this.appearance = new CGFappearance(this);
-	this.appearance.setAmbient(0.3, 0.3, 0.3, 1);
-	this.appearance.setDiffuse(0.7, 0.7, 0.7, 1);
-	this.appearance.setSpecular(0.0, 0.0, 0.0, 1);	
-	this.appearance.setShininess(120);
+	this.appearance.setAmbient(0.5, 0.5, 0.5, 1);
+	this.appearance.setDiffuse(0.5, 0.5, 0.5, 1);
+	this.appearance.setSpecular(0.5, 0.5, 0.5, 1);	
+	this.appearance.setShininess(100);
 }
 
 planenurbs.prototype = Object.create(CGFscene.prototype);
@@ -56,7 +56,6 @@ planenurbs.prototype.makeSurface = function (id, degree1, degree2, knots1, knots
 
 planenurbs.prototype.display = function () 
 {	
-	//this.appearance.apply();
 	for (i = 0; i < this.surfaces.length ; i++) {
 		this.pushMatrix();
 	
