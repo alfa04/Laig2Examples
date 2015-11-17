@@ -410,7 +410,7 @@ XMLscene.prototype.fixAnims = function() {
 		var node = this.nodesList[i];
 		var done = 0;
 		for (var j = 0; j < this.animationsList.length; j++) {
-			if(node["animationref"].id == this.animationsList[j].id && done == 0){
+			if(node["animationref"] != null && node["animationref"].id == this.animationsList[j].id && done == 0){
 					done = 1;
 					node["animationref"].finished = true;
 	            	node["animationref"] = this.animationsList[j].clone();
@@ -425,7 +425,7 @@ XMLscene.prototype.enableAnims = function(id, enabled) {
 		var node = this.nodesList[i];
 		var done = 0;
 		for (var j = 0; j < this.animationsList.length; j++) {
-			if(this.animationsList[j].id == id && node["animationref"].id == this.animationsList[j].id && done == 0){
+			if(node["animationref"] != null && this.animationsList[j].id == id && node["animationref"].id == this.animationsList[j].id && done == 0){
 				if(enabled){
 					done = 1;
 					node["animationref"].finished = true;
