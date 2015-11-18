@@ -382,8 +382,8 @@
             <controlpoint x="0" y="-1" z="0" />
 
             <controlpoint x="0.1" y="0" z="6" />
-            <controlpoint x="0.1" y="0" z="4" />
-            <controlpoint x="0.1" y="0" z="2" />
+            <controlpoint x="3" y="0" z="4" />
+            <controlpoint x="6" y="0" z="2" />
             <controlpoint x="0.1" y="0" z="0" />
 
             <controlpoint x="0" y="-0.2" z="6" />
@@ -409,8 +409,8 @@
             <controlpoint x="0" y="-0.2" z="0" />
 
              <controlpoint x="0.1" y="0" z="6" />
-            <controlpoint x="0.1" y="0" z="4" />
-            <controlpoint x="0.1" y="0" z="2" />
+            <controlpoint x="3" y="0" z="4" />
+            <controlpoint x="6" y="0" z="2" />
             <controlpoint x="0.1" y="0" z="0" />
 
             <controlpoint x="0" y="-4" z="0" />
