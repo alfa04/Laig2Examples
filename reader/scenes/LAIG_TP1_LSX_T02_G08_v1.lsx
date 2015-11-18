@@ -12,7 +12,7 @@
 
  <ILLUMINATION>
         <ambient r="1" g="0.52" b="0.5" a="1" />
-        <background r="0.5" g="0.5" b="0.5" a="1" />
+        <background r="0.5" g="0.7" b="0.8" a="1" />
 </ILLUMINATION>
 
 <LIGHTS>
