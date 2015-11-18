@@ -456,9 +456,9 @@
      <NODE id="aviao">       <!--   defines one intermediate node; may be repeated as necessary -->
 
         <!-- next two lines are mandatory -->
-        <MATERIAL id="body" />      <!-- declared material superimposes the material received from parent node -->
+        <MATERIAL id="black" />      <!-- declared material superimposes the material received from parent node -->
                                   <!-- id="null" maintains material from parent node        -->
-        <TEXTURE id="body" />       <!-- declared texture superimposes the texture received from parent node -->
+        <TEXTURE id="black" />       <!-- declared texture superimposes the texture received from parent node -->
                                   <!-- id="null" maintains texture from parent node       -->
                                   <!-- id="clear" clears texture declaration received from parent node      -->
 
