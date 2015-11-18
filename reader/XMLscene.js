@@ -209,9 +209,11 @@ XMLscene.prototype.display = function () {
         for(var i = 0; i < this.nodesList.length; i++){
         
         	var node = this.nodesList[i];
+        	//console.log(node);
             this.pushMatrix();
             node["material"].setTexture(node["texture"]);
             if (node["texture"] != null) {
+            	//console.log(node["primitive"]);
                 node["primitive"].updateTex(node["texture"].amplifFactor_S, node["texture"].amplifFactor_T);
             }
             if(node["animationref"] != null && node["animationref"].finished == false){
@@ -274,7 +276,7 @@ XMLscene.prototype.setLeaves = function() {
                 planenurbs1.id = leaf.id;
                 this.leaveslist.push(planenurbs);
                 break;
-			 case "patch":
+			case "patch":
 			 	console.log("PATCHHHH----");
 			    console.log(leaf.args);
 			    console.log("/PATCHHHH----");
@@ -283,7 +285,11 @@ XMLscene.prototype.setLeaves = function() {
                 this.leaveslist.push(patch1);
                 break;
 
-
+            case "terrain":
+                terrain = new terrain(this,leaf.args);
+                terrain.id = leaf.id;
+                this.leaveslist.push(terrain);
+                break;
         }
 	}
 };
@@ -394,7 +400,7 @@ XMLscene.prototype.setAnimation = function(){
 		var node = this.nodesList[i];
 		for (var j = 0; j < this.animationsList.length; j++) {
 
-				console.log(this.animationsList.length);
+				//console.log(this.animationsList.length);
 			if(node["animationref"] == this.animationsList[j].id){
 				node["animationref"] = this.animationsList[j];
 				this.animsNo[this.animationsList[j].id] = false;

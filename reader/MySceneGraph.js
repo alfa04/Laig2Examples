@@ -547,7 +547,7 @@ MySceneGraph.prototype.parseLeaves= function(rootElement) {
 
 	var leafInfo = new Leaf (leaf[i].getAttribute('id'));
 
-	leafInfo.type= this.reader.getItem(leaf[i], "type", ['patch','plane','rectangle', 'cylinder', 'sphere', 'triangle','patch']);
+	leafInfo.type= this.reader.getItem(leaf[i], "type", ['patch','plane','rectangle', 'cylinder', 'sphere', 'triangle','patch', 'terrain']);
 
 	if(leafInfo.type == "rectangle"){
 		leafInfo.args.push(this.reader.getRGBA(leaf[i], "args"));
@@ -615,6 +615,14 @@ MySceneGraph.prototype.parseLeaves= function(rootElement) {
 		//var aux = this.reader.getFloat(leaf[i], "parts", true);
 		//leafInfo.args.push(aux);
 		//console.log(leafInfo.args); 
+	}
+
+	else if(leafInfo.type == "terrain"){
+		var texture = this.reader.getString(leaf[i], "texture", true);
+		var heightMap = this.reader.getString(leaf[i], "heightmap", true);
+		leafInfo.args.push(texture);
+		leafInfo.args.push(heightMap);
+		console.log(leafInfo.args); 
 	}
 
 

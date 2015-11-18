@@ -100,6 +100,10 @@
         <file path="textures/romenia1.jpg" />                             <!-- path to file -->
         <amplif_factor s="16.0" t="16.0" />                <!-- x/s, y/t -->
     </TEXTURE>
+    <TEXTURE id="mar">
+        <file path="textures/texture.jpg" />                             <!-- path to file -->
+        <amplif_factor s="16.0" t="16.0" />                <!-- x/s, y/t -->
+    </TEXTURE>
 
     <!-- NOTE: this block "TEXTURE" must be repeated as necessary with different "id" -->
     
@@ -175,12 +179,16 @@
 </MATERIALS>
 
 <animations>
-    <animation id="ani1" span="5.0" type="linear">
+    <animation id="ani1" span="10.0" type="linear">
         <controlpoint xx="0.0" yy="0.0" zz="0.0" />
-        <controlpoint xx="5.0" yy="0.0" zz="0.0" />
-        <controlpoint xx="5.0" yy="5.0" zz="0.0" />
+        <controlpoint xx="1.7" yy="1.8" zz="1.7" />
+        <controlpoint xx="4.0" yy="-0.6" zz="4.0" />
+        <controlpoint xx="4.8" yy="-0.6" zz="4.8" />
+        <controlpoint xx="8.0" yy="1.0" zz="8.0" />
+        <controlpoint xx="11.0" yy="1.0" zz="11.0" />
+        <controlpoint xx="11.5" yy="1.5" zz="11.5" />
     </animation>
-    <animation id="ani2" span="5.0" type="circular" center="0 0 0" radius="10.0" startang="0" rotang="10" />
+    <animation id="ani2" span="10.0" type="circular" center="0 5 0" radius="10.0" startang="0" rotang="10" />
 </animations>
 
 <LEAVES>
@@ -409,14 +417,8 @@
             <controlpoint x="0" y="-3" z="0" />
             <controlpoint x="0" y="-2" z="0" />
             <controlpoint x="0" y="-1" z="0" />
-
-
-
-
-            
-
-
     </LEAF>
+    <LEAF id="agua" type="terrain" texture="scenes/textures/terrainmap.jpg" heightmap="scenes/textures/FEUP.png"/>
     <!-- Parameters of the above primitives:                                                         -->
         <!--rectangle: 2D coordinates for left-top and right-bottom vertices.                        -->
         <!-- cylinder:  height, bottom radius, top radius, sections along height, parts per section  -->
@@ -441,16 +443,17 @@
 
 
         <!-- declaring descendents, ate least one node or one leaf must be present -->
-        <DESCENDANTS>
-            <DESCENDANT id="square" />  
-            <DESCENDANT id="tri" /> 
+        <DESCENDANTS> 
+            <DESCENDANT id="barco" /> 
+            <DESCENDANT id="mar" /> 
+            <DESCENDANT id="aviao" /> 
                                          <!-- may be repeatad as necessary. It can refer an -->
                                          <!-- identifier of another node or leaf, later defined in the lsx file. -->
         </DESCENDANTS>
 
     </NODE>
 
-    <NODE id="square">       <!--   defines one intermediate node; may be repeated as necessary -->
+     <NODE id="aviao">       <!--   defines one intermediate node; may be repeated as necessary -->
 
         <!-- next two lines are mandatory -->
         <MATERIAL id="body" />      <!-- declared material superimposes the material received from parent node -->
@@ -462,17 +465,16 @@
 
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
-            <DESCENDANT id="triangle2" />    <!-- "ss" is the identifier of a node or of leaf; -->
+            <DESCENDANT id="triangle2" />     <!-- "ss" is the identifier of a node or of leaf; -->
                                          <!-- may be repeatad as necessary. It can refer an -->
                                          <!-- identifier of another node or leaf, later defined in the lsx file. -->
         </DESCENDANTS>
-
 
         <animationref id="ani2" />
 
     </NODE>
 
-    <NODE id="tri">       <!--   defines one intermediate node; may be repeated as necessary -->
+    <NODE id="mar">       <!--   defines one intermediate node; may be repeated as necessary -->
 
         <!-- next two lines are mandatory -->
         <MATERIAL id="body" />      <!-- declared material superimposes the material received from parent node -->
@@ -484,15 +486,10 @@
 
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
-            <DESCENDANT id="triangleKnife" />
-            <DESCENDANT id="barco" />     <!-- "ss" is the identifier of a node or of leaf; -->
-                <!-- "ss" is the identifier of a node or of leaf; -->
-              <!-- may be repeatad as necessary. It can refer an -->
+            <DESCENDANT id="aguaNo" />     <!-- "ss" is the identifier of a node or of leaf; -->
+                                         <!-- may be repeatad as necessary. It can refer an -->
                                          <!-- identifier of another node or leaf, later defined in the lsx file. -->
         </DESCENDANTS>
-
-       <!--   <animationref id="ani1" /> -->
-      <!--  <animationref id="ani2" /> -->
 
     </NODE>
     
@@ -502,6 +499,7 @@
         <TEXTURE id="body" /> 
         
         <ROTATION axis="z" angle="-180.0" />
+        <ROTATION axis="y" angle="-180.0" />
         <DESCENDANTS>     
               <DESCENDANT id="trascasco" />  
               <DESCENDANT id="frentecasco" /> 
@@ -509,6 +507,8 @@
               <DESCENDANT id="bandeiranode" />     
               <DESCENDANT id="bandeiranode1" />
         </DESCENDANTS>
+
+        <animationref id="ani1"/>
 
     </NODE>
         <NODE id="interior">   
@@ -573,6 +573,17 @@
         
         <DESCENDANTS>  
               <DESCENDANT id="bandeira1" /> 
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="aguaNo">   
+        <MATERIAL id="body" />    
+        <TEXTURE id="mar" /> 
+        
+       <TRANSLATION x="4.0" y="-1.5" z="4.0" />
+        <DESCENDANTS>  
+              <DESCENDANT id="agua" /> 
         </DESCENDANTS>
 
     </NODE>

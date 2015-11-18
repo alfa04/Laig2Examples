@@ -57,10 +57,13 @@ LightingScene.prototype.init = function (application) {
 	this.testShaders[4].setUniformsValues({uSampler2: 1});
 	this.testShaders[5].setUniformsValues({uSampler2: 1});
 
-	this.texture2 = new CGFtexture(this, "textures/FEUP.jpg");
+	this.texture2 = new CGFtexture(this, "textures/FEUP.png");
 	
 	//this.teapot=xx.yy;
-
+	this.cenas = [];
+	this.cenas[0] = "textures/texture.jpg";
+	this.cenas[1] = "textures/FEUP.png";
+	this.terrain = new terrain(this,this.cenas);
 	this.teapot=new Teapot(this);
 		
 };
@@ -123,16 +126,13 @@ LightingScene.prototype.display = function ()
 	//this.scale(3,3,3);
 
 	this.appearance.apply();
-
+	this.texture2.bind(1);
 	this.setActiveShader(this.testShaders[this.selectedExampleShader]);
+
 	this.pushMatrix();
-
-    this.texture2.bind(1);
-
-	this.translate(0,-6,0);
-	this.scale(0.5,0.5,0.5);
-	this.rotate(-Math.PI/2, 1, 0, 0);	
-	this.teapot.display();
+	
+	this.rotate(Math.PI/2,1,0,0);
+	this.terrain.display();
 	this.popMatrix();
 
 	this.setActiveShader(this.defaultShader);

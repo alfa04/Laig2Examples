@@ -1,9 +1,19 @@
-function planenurbs(scene, nrDivs) {
+function plane(scene, nrDivs) {
     CGFobject.call(this,scene);
     this.nrDivs = nrDivs;
         
     this.surface = null;
+    this.translations = [];
+ this.sca = [ 5.0, 0.0, 0.0, 0.0,
+                0.0, 5.0, 0.0, 0.0,
+                0.0, 0.0,5.0, 0.0,
+                0.0, 0.0, 0.0, 1.0  ];
     this.testAppearance = new CGFappearance(this.scene);
+
+//  console.log("ok");
+    this.texture = new CGFtexture(this.scene, "textures/texture.jpg");
+    this.testAppearance.setTexture(this.texture);
+    this.testAppearance.setTextureWrap ('REPEAT', 'REPEAT');
     
     this.makeSurface("0", 1, // degree on U: 2 control vertexes U
                                          1, // degree on V: 2 control vertexes on V
@@ -36,10 +46,10 @@ function planenurbs(scene, nrDivs) {
 
 }
 
-planenurbs.prototype = Object.create(CGFscene.prototype);
-planenurbs.prototype.constructor = planenurbs;
+plane.prototype = Object.create(CGFscene.prototype);
+plane.prototype.constructor = plane;
 
-planenurbs.prototype.makeSurface = function (id, degree1, degree2, knots1, knots2, controlvertexes, translation) {
+plane.prototype.makeSurface = function (id, degree1, degree2, knots1, knots2, controlvertexes, translation) {
         
     var nurbsSurface = new CGFnurbsSurface(degree1, degree2, knots1, knots2, controlvertexes);
     
@@ -51,11 +61,12 @@ planenurbs.prototype.makeSurface = function (id, degree1, degree2, knots1, knots
 
 }
 
-planenurbs.prototype.display = function () 
+plane.prototype.display = function () 
 {
 
         this.scene.pushMatrix();
-   		this.scene.scale(15,6,15);
+    this.scene.scale(15,5,15);
+        //this.scene.translate(this.translations[0], this.translations[1], this.translations[2]);
         this.surface.display();
         this.scene.popMatrix();
 }
